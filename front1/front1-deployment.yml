@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front1
+  labels:
+    name: front1
+    component: frontend
+spec:
+  selector:
+    matchLabels:
+      name: front1
+      component: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: front1
+        component: frontend
+    spec:
+      containers:
+      - name: front1
+        image: front1:6
+        ports:
+        - containerPort: 80
