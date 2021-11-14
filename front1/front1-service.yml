@@ -9,9 +9,7 @@ spec:
   loadBalancerIP: 137.135.200.175
   type: LoadBalancer  
   ports:
-    - protocol: TCP
-      port: 9080
-      targetPort: 80
+  - port: 80
   selector:
     name: front1
     component: frontend
