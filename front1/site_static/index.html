@@ -1,0 +1,32 @@
+<html lang="en-US">
+<head>
+<title>automation-t1</title>
+
+<script type='text/javascript'>
+  function SubmitForm()
+    {
+       document.forms['math'].action='add.php';
+       document.forms['math'].target='result_add';
+       document.forms['math'].submit();
+    
+       document.forms['math'].action='multiply.php';
+       document.forms['math'].target='result_multiply';
+       document.forms['math'].submit();
+       return true;
+    }
+</script>
+
+</head>
+<body>
+
+<form name='math'>
+  <input type='number' name='first' id='first' maxlength="50" /><br/>
+  <input type='number' name='second' id='second' maxlength="50" /><br/>
+  <input type='button' name='Submit' value='Submit' onclick="SubmitForm()"/>
+</form>
+
+<iframe name='result_add' width='300' height='200'></iframe>
+<iframe name='result_multiply' width='300' height='200'></iframe>
+
+</body>
+</html>
