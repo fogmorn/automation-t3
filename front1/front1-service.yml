@@ -7,7 +7,7 @@ metadata:
     component: frontend
 spec:
   loadBalancerIP: 137.135.200.175
-  clusterIP: 10.96.0.1
+  clusterIP: 10.100.128.37
   type: LoadBalancer  
   ports:
     - protocol: TCP
