@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back2
+  labels:
+    name: back2
+spec:
+  selector:
+    matchLabels:
+      name: back2
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: back2
+    spec:
+      - name: back2
+        image: back2:6
+        ports:
+          - containerPort: 9001
