@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: back1
+  namespace: automation-t3
   labels:
     name: back1
 spec:

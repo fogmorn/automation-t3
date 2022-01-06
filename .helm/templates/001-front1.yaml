@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: front1
+  namespace: automation-t3
   labels:
     component: frontend
 spec:
