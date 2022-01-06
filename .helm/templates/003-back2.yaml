@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back2
+  labels:
+    name: back2
+spec:
+  selector:
+    matchLabels:
+      name: back2
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: back2
+    spec:
+      containers:
+      - name: back2
+        image: {{ tuple "back2" . | werf_image }}
+        ports:
+          - containerPort: 9001
