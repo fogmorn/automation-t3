@@ -3,3 +3,9 @@ configVersion: 1
 ---
 image: front1
 dockerfile: ./front1.Dockerfile
+---
+image: back1
+dockerfile: ./back1.Dockerfile
+---
+image: back2
+dockerfile: ./back2.Dockerfile
