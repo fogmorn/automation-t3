@@ -1,0 +1,5 @@
+project: automation-t3
+configVersion: 1
+---
+image: front1
+dockerfile: ./front1.Dockerfile

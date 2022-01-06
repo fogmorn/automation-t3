@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front1
+  labels:
+    component: frontend
+spec:
+  selector:
+    matchLabels:
+      component: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        component: frontend
+    spec:
+      containers:
+      - name: front1
+        image: {{ tuple "front1" . | werf_image }}
+        ports:
+        - containerPort: 80
