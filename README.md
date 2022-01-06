@@ -121,7 +121,6 @@ kubectl get services -o wide
 ```
 
 ### Перенаправление портов
-FrontEnd под запущен на порту 9080, а nginx в нем на порту 80.  
 Команда для перенаправления 9080 порта сервера K8s на порт 80: 
 ```Shell
 kubectl port-forward --address 0.0.0.0 front1-6cb967bb5d-q4pcj 9080:80
