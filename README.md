@@ -79,19 +79,6 @@ ssh -f -N -L 46041:localhost:46041 azureuser@137.135.200.175
 2. Запуск основной программы контейнера.
 3. Копирование файлов сайта на BackEnd контейнеры.
 
-<details><summary>Сборка образов</summary>
-<p>
-
-```Shell
-docker build -t back1:6 -f back1.Dockerfile .
-docker build -t back2:6 -f back2.Dockerfile .
-docker build -t front1:6 -f front1.Dockerfile .
-```
-
-</p>
-</details>
-
-
 ### Запуск Docker контейнеров в Kubernetes
 Сборка Docker образов и их запуск в Kubernetes осуществляется с помощью утилита Werf.  
 Файл [werf.yaml](werf.yaml) используется для сборки образов.  
