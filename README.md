@@ -118,53 +118,48 @@ Using werf config render file: /tmp/werf-config-render-1990110385
 │ └ Building stage back2/dockerfile (33.49 seconds)
 └ ⛵ image back2 (34.11 seconds)
 <some lines skipped>
-┌ Waiting for release resources to become ready                                                                                           
+┌ Waiting for release resources to become ready                                                                                                   
 │ ┌ Status progress                                                                                                                               
 │ │ DEPLOYMENT                                                                        REPLICAS       AVAILABLE        UP-TO-DATE                 
-│ │ back1                                                                             3/2            2                2                           
+│ │ back1                                                                             2/2            1                2                           
 │ │ │   POD                            READY      RESTARTS       STATUS               ---                                                         
-│ │ ├── 6ff9d8fbc9-7bl5k               1/1        0              Running              Waiting for: replicas 3->2                                 
-│ │ ├── 6ff9d8fbc9-plk4m               0/1        0              ContainerCreating                                                               
-│ │ ├── 857d8cc657-5nz4x               1/1        0              Running               
-│ │ └── 857d8cc657-mkxl4               1/1        0              Terminating          
-│ │ back2                                                                             3/2            2                1                           
+│ │ ├── 857d8cc657-5nz4x               0/1        0              ContainerCreating    Waiting for: available 1->2                                 
+│ │ └── 857d8cc657-mkxl4               1/1        0              Running                                                                         
+│ │ back2                                                                             2/2            2                2                           
+│ │ │   POD                            READY      RESTARTS       STATUS                                                                           
+│ │ ├── 57bb69b58f-kccpn               1/1        0              Running                                                                         
+│ │ └── 57bb69b58f-shs9d               1/1        0              Running                                                                         
+│ │ front1                                                                            1/1            0                1                           
 │ │ │   POD                            READY      RESTARTS       STATUS               ---                                                         
-│ │ ├── 557fcb4995-fvrw7               0/1        0              ContainerCreating    Waiting for: up-to-date 1->2, replicas 3->2                 
-│ │ ├── 57bb69b58f-kccpn               1/1        0              Running               
-│ │ └── 57bb69b58f-shs9d               1/1        0              Running               
-│ │ front1                                                                            1/1            1                1                           
-│ └ Status progress
-│ 
-│ ┌ Status progress
+│ │ └── 5b956ff4c5-8jzkb               0/1        0              ContainerCreating    Waiting for: available 0->1                                 
+│ └ Status progress                                                                                                                               
+│                                                                                                                                                 
+│ ┌ Status progress                                                                                                                               
 │ │ DEPLOYMENT                                                                        REPLICAS       AVAILABLE        UP-TO-DATE                 
-│ │ back1                                                                             3->2/2         2                2                           
+│ │ back1                                                                             2/2            1->2             2                           
 │ │ │   POD                            READY      RESTARTS       STATUS                                                                           
-│ │ ├── 6ff9d8fbc9-7bl5k               1/1        0              Running               
-│ │ ├── 6ff9d8fbc9-plk4m               1/1        0              ContainerCreating    
-│ │ │                                                            -> Running           
-│ │ ├── 857d8cc657-5nz4x               1/1        0              Running ->           
-│ │ │                                                            Terminating          
-│ │ └── 857d8cc657-mkxl4               0/1        0              Terminating          
-│ │ back2                                                                             3->2/2         2                1->2                       
+│ │ ├── 857d8cc657-5nz4x               1/1        0              ContainerCreating                                                               
+│ │ │                                                            -> Running                                                                       
+│ │ └── 857d8cc657-mkxl4               1/1        0              Running                                                                         
+│ │ back2                                                                             2/2            2                2                           
+│ │ │   POD                            READY      RESTARTS       STATUS                                                                          
+│ │ ├── 57bb69b58f-kccpn               1/1        0              Running                                                                         
+│ │ └── 57bb69b58f-shs9d               1/1        0              Running                                                                         
+│ │ front1                                                                            1/1            0->1             1                           
 │ │ │   POD                            READY      RESTARTS       STATUS                                                                           
-│ │ ├── 557fcb4995-8fpj5               1/1        0              Running               
-│ │ ├── 557fcb4995-fvrw7               1/1        0              ContainerCreating    
-│ │ │                                                            -> Running           
-│ │ ├── 57bb69b58f-kccpn               1/1        0              Running ->           
-│ │ │                                                            Terminating          
-│ │ └── 57bb69b58f-shs9d               0/0        0              -                     
-│ │ front1                                                                            1/1            1                1                           
+│ │ └── 5b956ff4c5-8jzkb               1/1        0              ContainerCreating                                                               
+│ │                                                              -> Running           
 │ └ Status progress
-└ Waiting for release resources to become ready (9.87 seconds)
+└ Waiting for release resources to become ready (5.13 seconds)
 
 Release "automation-t3" has been upgraded. Happy Helming!
 NAME: automation-t3
-LAST DEPLOYED: Sat Jan  8 18:15:18 2022
+LAST DEPLOYED: Sat Jan  8 17:02:38 2022
 NAMESPACE: automation-t3
 STATUS: deployed
-REVISION: 4
+REVISION: 3
 TEST SUITE: None
-Running time 46.09 seconds
+Running time 7.02 seconds
 ```
 
 </p>
@@ -174,31 +169,28 @@ Running time 46.09 seconds
 <p>
 
 ```Shell
-azureuser@s01:~$ kubectl get all --namespace automation-t3
-NAME                         READY   STATUS    RESTARTS   AGE
-pod/back1-6ff9d8fbc9-7bl5k   1/1     Running   0          24m
-pod/back1-6ff9d8fbc9-plk4m   1/1     Running   0          24m
-pod/back2-557fcb4995-8fpj5   1/1     Running   0          24m
-pod/back2-557fcb4995-fvrw7   1/1     Running   0          24m
-pod/front1-8b494ffc6-v2kjq   1/1     Running   0          24m
-
+azureuser@s01:~$ kubectl get all -n automation-t3                                                                                                  
+NAME                          READY   STATUS    RESTARTS   AGE
+pod/back1-857d8cc657-5nz4x    1/1     Running   0          22s                                                                                   
+pod/back1-857d8cc657-mkxl4    1/1     Running   0          22s                                                                                   
+pod/back2-57bb69b58f-kccpn    1/1     Running   0          22s                                                                                   
+pod/back2-57bb69b58f-shs9d    1/1     Running   0          22s                                                                                   
+pod/front1-5b956ff4c5-8jzkb   1/1     Running   0          21s                                                                                   
+  
 NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
-service/back1    ClusterIP   10.110.189.203   <none>        9000/TCP   97m
-service/back2    ClusterIP   10.97.9.129      <none>        9001/TCP   97m
-service/front1   ClusterIP   10.104.231.86    <none>        80/TCP     97m
-
-NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/back1    2/2     2            2           97m
-deployment.apps/back2    2/2     2            2           97m
-deployment.apps/front1   1/1     1            1           97m
-
+service/back1    ClusterIP   10.110.189.203   <none>        9000/TCP   22s
+service/back2    ClusterIP   10.97.9.129      <none>        9001/TCP   22s
+service/front1   ClusterIP   10.104.231.86    <none>        80/TCP     22s
+                                                                                                                                                 
+NAME                     READY   UP-TO-DATE   AVAILABLE   AGE                                                                                     
+deployment.apps/back1    2/2     2            2           22s                                                                                     
+deployment.apps/back2    2/2     2            2           22s                                                                                     
+deployment.apps/front1   1/1     1            1           22s            
+                                                                         
 NAME                                DESIRED   CURRENT   READY   AGE
-replicaset.apps/back1-6ff9d8fbc9    2         2         2       24m
-replicaset.apps/back1-857d8cc657    0         0         0       97m
-replicaset.apps/back2-557fcb4995    2         2         2       24m
-replicaset.apps/back2-57bb69b58f    0         0         0       97m
-replicaset.apps/front1-5b956ff4c5   0         0         0       97m
-replicaset.apps/front1-8b494ffc6    1         1         1       24m
+replicaset.apps/back1-857d8cc657    2         2         2       22s                                                                               
+replicaset.apps/back2-57bb69b58f    2         2         2       22s
+replicaset.apps/front1-5b956ff4c5   1         1         1       22s
 ```
 
 </p>
