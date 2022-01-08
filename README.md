@@ -18,47 +18,40 @@
 
 ## Решение
 
-### Установка minikube
-Был установлен minikube.
-<details><summary>Запуск minikube</summary>
+### Установка и настройка minikube
+Для установки выполнен раздел Installation из [руководства](https://minikube.sigs.k8s.io/docs/start/).
+<details><summary>Запуск кластера minikube</summary>
 <p>
 
 ```Shell
-  azureuser@s01:~$ minikube start
-* minikube v1.24.0 on Ubuntu 20.04                                       
-* Automatically selected the docker driver. Other choices: ssh, none  
-* Starting control plane node minikube in cluster minikube
+azureuser@s01:~$ minikube start --driver=docker --insecure-registry registry.example.com:80                                                       
+* minikube v1.24.0 on Ubuntu 20.04                                                                                                               
+* Using the docker driver based on user configuration                                                                                             
+* Starting control plane node minikube in cluster minikube                                                                                       
 * Pulling base image ...                                                                                                                         
-* Downloading Kubernetes v1.22.3 preload ...          
-    > preloaded-images-k8s-v13-v1...: 501.73 MiB / 501.73 MiB  100.00% 307.33 M
-    > gcr.io/k8s-minikube/kicbase: 355.78 MiB / 355.78 MiB  100.00% 21.56 MiB p
-* Creating docker container (CPUs=2, Memory=2200MB) ...- E1114 06:56:42.883217    1658 network_create.go:85] failed to find free subnet for docker network minikube after 20 attempts: no free private network subnets found with given parameters (start: "192.168.57.0", step: 9, tries: 20)                                                                                                                                               
-! Unable to create dedicated network, this might result in cluster IP change after restart: un-retryable: no free private network subnets found with given parameters (start: "192.168.57.0", step: 9, tries: 20)          
-* Preparing Kubernetes v1.22.3 on Docker 20.10.8 ...
-  - Generating certificates and keys ...                                                                                                        
-  - Booting up control plane ...                                         
-  - Configuring RBAC rules ...                                           
-* Verifying Kubernetes components...          
+* Downloading Kubernetes v1.22.3 preload ...                                                                                                     
+    > preloaded-images-k8s-v13-v1...: 501.73 MiB / 501.73 MiB  100.00% 220.58 M                                                                   
+    > gcr.io/k8s-minikube/kicbase: 355.78 MiB / 355.78 MiB  100.00% 19.70 MiB p                                                                   
+* Creating docker container (CPUs=2, Memory=2200MB) ...                                                                                           
+* Preparing Kubernetes v1.22.3 on Docker 20.10.8 ...                                                                                             
+  - Generating certificates and keys ...                                                                                                         
+  - Booting up control plane ...                                                                                                                 
+  - Configuring RBAC rules ...                                                                                                                   
+* Verifying Kubernetes components...                                                                                                             
   - Using image gcr.io/k8s-minikube/storage-provisioner:v5
-* Enabled addons: storage-provisioner, default-storageclass             
+* Enabled addons: default-storageclass, storage-provisioner
 * kubectl not found. If you need it, try: 'minikube kubectl -- get pods -A'
 * Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+  
+  
+azureuser@s01:~$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND                  CREATED         STATUS         PORTS                    NAMES
+4599e8f307fa   gcr.io/k8s-minikube/kicbase:v0.0.28   "/usr/local/bin/entr…"   2 minutes ago   Up 2 minutes   127.0.0.1:49157->22/tcp, 127.0.0.1:49156->2376/tcp, 127.0.0.1:49155->5000/tcp, 127.0.0.1:49154->8443/tcp, 127.0.0.1:49153->32443/tcp   minikube
+
 ```
 
 </p>
 </details>
-
-<details><summary>Интеграция minikube и docker</summary>
-<p>
-
-```Shell
-minikube docker-env
-eval $(minikube -p minikube docker-env)
-```
-
-</p>
-</details>
-
 
 <details><summary>Запуск minikube dashboard</summary>
 <p>
