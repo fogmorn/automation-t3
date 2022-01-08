@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: front1
-        image: {{ tuple "front1" . | werf_image }}
+        image: {{ .Values.werf.image.front1 }}
         ports:
         - containerPort: 80
