@@ -73,7 +73,7 @@ ssh -f -N -L 46041:localhost:46041 azureuser@137.135.200.175
 3. Копирование файлов сайта на BackEnd контейнеры.
 
 ### Запуск Docker контейнеров в Kubernetes
-Сборка Docker образов и их запуск в Kubernetes осуществляется с помощью утилита Werf.  
+Сборка Docker образов и их запуск в Kubernetes осуществляется с помощью утилиты [Werf](https://github.com/werf/werf).  
 Файл [werf.yaml](werf.yaml) используется для сборки образов.  
 Файлы в папке [.helm/templates](.helm/templates) используются для запуска контейнеров в Kubernetes.
 
