@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: back2
-  namespace: automation-t3
   labels:
     name: back2
 spec:
@@ -17,6 +16,6 @@ spec:
     spec:
       containers:
       - name: back2
-        image: {{ tuple "back2" . | werf_image }}
+        image: {{ .Values.werf.image.back2 }}
         ports:
           - containerPort: 9001

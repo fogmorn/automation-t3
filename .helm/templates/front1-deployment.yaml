@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: front1
-  namespace: automation-t3
   labels:
     component: frontend
 spec:
@@ -17,6 +16,6 @@ spec:
     spec:
       containers:
       - name: front1
-        image: {{ tuple "front1" . | werf_image }}
+        image: {{ .Values.werf.image.front1 }}
         ports:
         - containerPort: 80

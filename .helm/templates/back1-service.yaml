@@ -1,19 +1,18 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: back2
-  namespace: automation-t3
+  name: back1
 spec:
   internalTrafficPolicy: Cluster
   ipFamilies:
   - IPv4
   ipFamilyPolicy: SingleStack
   ports:
-  - port: 9001
+  - port: 9000
     protocol: TCP
-    targetPort: 9001
+    targetPort: 9000
   selector:
-    name: back2
+    name: back1
   sessionAffinity: None
   type: ClusterIP
 status:
