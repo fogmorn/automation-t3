@@ -3,10 +3,17 @@ kind: Service
 metadata:
   name: front1
 spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
   selector:
     name: front1
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
